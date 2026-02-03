@@ -1,0 +1,30 @@
+Usa le frecce per muoverti
+Cerca di fare il punteggio più alto possibile prima che scada il tempo
+Mangia mele per aumentare il punteggio
+Il punteggio guadagnato dipende dal livello
+Completa il livello per ottenere un bonus
+la partita termina se il tempo scade o il serpente si morde la coda
+
+
+
+Main State Machine 
+Main->Menu:
+MenuLoop, scelta del prossimo stato, o apertura finestre popup.
+
+Main->Play:
+GameLoop, con a schermo punteggio ottenuto e tempo rimanente e quanto manca al nuovo livello.
+
+Main_>Pause:
+Sottoclasse di Menu che mette in pausa il gameloop con un loop interno che permette di:
+-scegliere se tornare e riprendere da dove si era messo in pause,
+-perdere la partita e tornare al menu iniziale, 
+-cambiare livello. 
+
+Main->GameOver:
+Prende i Risultati e li salva in un file esterno usando ifstream per poi tornare al menu.
+
+Tutte queste classi conterranno WindowManager; 
+GameOver e Menu conterranno la classe Database per avere accesso alle funzioni read e write,
+la Classe Livello dovrà essere conosciuta da Play e Pause.
+
+->Premi qualsiasi tasto per uscire

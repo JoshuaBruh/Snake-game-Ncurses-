@@ -1,0 +1,5 @@
+CONTROLS:
+-Arrow Keys For Movement
+-'n' for next level
+-'p' for previous level
+-'esc' to pause

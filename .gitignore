@@ -1,0 +1,11 @@
+Snake
+*.exe
+*.out
+
+obj/
+*.o
+*.d
+
+.vscode/
+
+*~
