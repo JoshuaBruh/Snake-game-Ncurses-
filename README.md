@@ -11,5 +11,6 @@ Matrice Booleana come griglia di gioco
 File per Classifica con funzioni di scrittura e lettura
 
 ## Compilare
-```bash make ./Snake 
+```bash 
+make ./Snake 
 
