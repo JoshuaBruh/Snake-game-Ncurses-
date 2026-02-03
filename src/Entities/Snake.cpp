@@ -23,11 +23,11 @@ Snake::Snake(int StartY, int StartX, int board_y, int board_x){
 Snake::~Snake(){}
 
 
-Snake::Direction Snake::GetDirection(){
+int Snake::GetDirection(){ //Snake::Direction Snake::GetDirection()
     return this->curr;
 }
 
-void Snake::SetDirection(Direction  d){
+void Snake::SetDirection(int  d){  //void Snake::SetDirection(Direction d)
     if (this->curr + d != 0){
         this->curr = d;
     }
@@ -56,7 +56,7 @@ void Snake::SnakeMove(int newHeadY, int newHeadX){
 void Snake::ResetPosition(int StartY, int StartX){
     this->HeadY = StartY;
     this->HeadX = StartX;
-    curr = Direction::RIGHT;
+    curr = Direction::RIGHT; //Direction::RIGHT;
 
     int currY = HeadY;
     int currX = HeadX;

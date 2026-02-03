@@ -16,11 +16,15 @@ void Pause::run_selected(int index, bool &ExitLoop){
           this->PressedResume = true;
           ExitLoop = true;
           break;
-        case 1:
-          this->LvlChosen = Choose_Level();
-          this->PressedResume = true;
-          ExitLoop = true;
+        case 1:{
+          int r = Choose_Level();
+          if(r != -1){
+            this->LvlChosen = r;
+            this->PressedResume = true;
+            ExitLoop = true;
+          }
           break;
+        }
         case 2:
           rules();
           break;
@@ -48,7 +52,7 @@ int Pause::Choose_Level(){
   
   
 
-  WINDOW* levelwin = wmng.popup_win(board_y,15);
+  WINDOW* levelwin = wmng.popup_win(board_y-2,15);
   int yWin,xWin;
   getmaxyx(levelwin, yWin, xWin);
   
@@ -88,6 +92,8 @@ int Pause::Choose_Level(){
             break; 
           case 27:
             this->Chosen = true;
+            wmng.close_popup(levelwin);
+            return -1;
             break;             
           default:
             break;
