@@ -3,9 +3,11 @@
 StateMachine::StateMachine(int board_y, int board_x) : board_y(board_y), board_x(board_x),
                                                        SnakeMenu(board_y, board_x),
                                                        SnakePlay(board_y, board_x),
-                                                       SnakePause(board_y, board_x),
-                                                       currentstate(GameState::MENU){
+                                                       SnakePause(board_y, board_x)
+                                                       {
+                                                       //currentstate(GameState::MENU){
                                                             initColors();
+                                                            currentstate='M';
                                                        }
 
 
@@ -44,65 +46,60 @@ void StateMachine::RunSelected(){
     switch (currentstate){
 
 
-        case GameState::MENU:
+        case 'M': //GameState::MENU:
             SnakeMenu.update_menu();
 
             if(SnakeMenu.PressedExit){
                 SnakeMenu.PressedExit = false;
-                currentstate = GameState::EXIT;
+                currentstate = 'E';//GameState::EXIT;
             }
             else{
-                currentstate = GameState::PLAY;
+                currentstate = 'G';//GameState::PLAY;
             }
             
             break;
 
 
 
-        case GameState::PLAY:
+        case 'G': //GameState::PLAY:
             SnakePlay.GameLoop();
             if (SnakePlay.game_over){
-                currentstate = GameState::MENU;
+                currentstate = 'M';//GameState::MENU;
                 SnakePlay.game_over = false;
             }
             else if(SnakePlay.PressedPause){
                 SnakePause.LvlChosen = SnakePlay.GetCurrLv();
                 SnakePlay.PressedPause = false;
-                currentstate = GameState::PAUSE;
+                currentstate = 'P';//GameState::PAUSE;
             }
             else{
-                currentstate = GameState::EXIT;
+                currentstate = 'E';//GameState::EXIT;
             }
             break;
 
 
 
-        case GameState::PAUSE:
+        case 'P': //GameState::PAUSE:
             SnakePause.update_menu();
             if (SnakePause.PressedResume){
                 SnakePlay.LevelToSet = SnakePause.LvlChosen;
                 SnakePause.PressedResume = false;
-                currentstate = GameState::PLAY;
+                currentstate = 'G';//GameState::PLAY;
             }
             else if (SnakePause.PressedMenu){
                 SnakePause.PressedMenu = false;
                 SnakePlay.game_over = true;
                 SnakePlay.exitfrommenu = true;
-                currentstate = GameState::PLAY;
+                currentstate = 'G';//GameState::PLAY;
             }
             break;
 
-
-
-        case GameState::GAMEOVER:
-            //currentstate = SnakeMenu.update_menu();
-            break;
-        case GameState::EXIT:
+        case 'E'://GameState::EXIT:
             break;
     }
 }
 
 
 bool StateMachine::isGameOver(){
-    return (currentstate == GameState::EXIT);
+    return (currentstate == 'E');//GameState::EXIT
 }

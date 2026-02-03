@@ -10,13 +10,12 @@ class StateMachine{
         Play SnakePlay;
         Pause SnakePause;
         Countdown Timer;
+        char currentstate;
         
     public:
-        enum class GameState {MENU, PLAY, PAUSE, GAMEOVER, EXIT}; //set di valori definiti a priori (in questo caso stati)
-        GameState currentstate;
+        //enum class GameState {MENU, PLAY, PAUSE, GAMEOVER, EXIT}; //set di valori definiti a priori (in questo caso stati)
+        //GameState currentstate;
         StateMachine(int board_y, int board_x);
-        //Lista di inizializzazione, quando costruisco Gamestate costruisco istantaneamente anche board_y,
-        //board_x, SnakeMenu e currentstate
 
 
 
