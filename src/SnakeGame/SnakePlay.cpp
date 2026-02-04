@@ -187,10 +187,7 @@ void Play::UserI(){
 
 
 void Play::Update(int y, int x){
-    wattron(this->Gwin, COLOR_PAIR(1) | A_BOLD);
     add(*apple, this->Gwin);
-    wattroff(this->Gwin, COLOR_PAIR(1) | A_BOLD);
-
 
     int NextY, NextX;
     CollisionManagement(NextY, NextX, y, x);
@@ -198,7 +195,6 @@ void Play::Update(int y, int x){
 
     delEnt(this->Gwin, Sk.SnakeCoord[SnakeLength-1][0], Sk.SnakeCoord[SnakeLength-1][1]);
 
-    wattron(this->Gwin, COLOR_PAIR(2) | A_BOLD);
     SnakeBody body(Sk.SnakeCoord[0][0], Sk.SnakeCoord[0][1]);
     add(body, this->Gwin);
 
@@ -206,7 +202,6 @@ void Play::Update(int y, int x){
     
     SnakeHead head(Sk.SnakeCoord[0][0], Sk.SnakeCoord[0][1]);
     add(head, this->Gwin);
-    wattroff(this->Gwin, COLOR_PAIR(2) | A_BOLD);
 
 }
 
@@ -398,7 +393,6 @@ void Play::delEnt(WINDOW * win, int y, int x){
 
 
 void Play::InitializeSnake(){
-    wattron(this->Gwin, COLOR_PAIR(2) | A_BOLD);
     for(int i = 0; i < SnakeLength; i++){
         if (i==0){
             SnakeHead head(Sk.SnakeCoord[i][0], Sk.SnakeCoord[i][1]);
@@ -409,7 +403,6 @@ void Play::InitializeSnake(){
             add(body, this->Gwin);
         }
     }
-    wattroff(this->Gwin, COLOR_PAIR(2) | A_BOLD);
 }
 
 

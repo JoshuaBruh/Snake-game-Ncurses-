@@ -4,13 +4,13 @@
 SnakeBody::SnakeBody(int y, int x){
     this->y = y;
     this->x = x;
-    this->EntRep = '#';
+    this->EntRep = '#' | COLOR_PAIR(2) | A_BOLD;
 }
 
 SnakeHead::SnakeHead(int y, int x){
     this->y = y;
     this->x = x;
-    this->EntRep = 'o';
+    this->EntRep = 'o' | COLOR_PAIR(2) | A_BOLD;
 }
 
 
