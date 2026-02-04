@@ -29,6 +29,11 @@ void Level::AddLevel(int NLevel, int ScoreMultiplier, double SpeedMoltiplier,int
 
 
 void Level::InitializeLevels() {
+    if(this->head != nullptr){
+        ResetCompleted();
+        return;
+    }
+
     AddLevel(1, 1, 1, 100, 500, 120);
     AddLevel(2, 2, 1.25, 300, 1500, 150);
     AddLevel(3, 3, 1.50, 700, 4500, 180);
@@ -111,6 +116,11 @@ void Level::ResetCompleted(){
     }
     this->curr = this->head;
     this->maxLevel = false;
+
+    if (Lwin != nullptr){
+        delwin(Lwin);
+        Lwin = nullptr;
+    }
 }
 
 

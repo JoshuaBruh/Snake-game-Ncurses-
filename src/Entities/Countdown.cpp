@@ -33,15 +33,13 @@ void Countdown::UpdateTimer(){
     wattron(Ctwin, A_BOLD);
     mvwprintw(Ctwin, 0, board_x - 10, "%02d:%02d", mins, secs);
     wattroff(Ctwin, A_BOLD);
-    wrefresh(Ctwin);
+    wnoutrefresh(Ctwin);
 }
 void Countdown::TimerClear(){
     wclear(Ctwin);
 }
 void Countdown::TimerRefresh(){
-    clearok(Ctwin, true);
     wnoutrefresh(Ctwin);
-    clearok(Ctwin, false);
 }
 
 Countdown::~Countdown(){}

@@ -21,9 +21,7 @@ void Scoreboard::ScoreClear(){
     wclear(Swin);
 }
 void Scoreboard::ScoreRefresh(){   
-    clearok(Swin, true);
     wnoutrefresh(Swin);
-    clearok(Swin, false);
 }
 
 Scoreboard::~Scoreboard(){}

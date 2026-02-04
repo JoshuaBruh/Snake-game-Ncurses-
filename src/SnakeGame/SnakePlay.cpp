@@ -94,7 +94,6 @@ void Play::GameLoop(){
         RestartGame();
     }
 
-    wrefresh(Gwin);
 
 
     while(!game_over){
@@ -316,7 +315,7 @@ void Play::Top10(){
     mvwprintw(HSwin, Hby/2-2, 2, "Insert Name, max 3 characters:");
     mvwprintw(HSwin, Hby/2+2, 2, "Press Enter to Confirm and return to Menu");
     echo();
-    wrefresh(HSwin);
+    wnoutrefresh(HSwin);
     curs_set(1);
 
     wmove(HSwin, Hby/2, Hbx/2);
@@ -501,7 +500,7 @@ void Play::LvlInfo_leftB(){
 
 
     if(SkL.getCurr()->completed){
-        wattron(LVLinfo, COLOR_PAIR(8) | A_REVERSE);
+        wattron(LVLinfo, COLOR_PAIR(8));
     }
     else{
         wattron(LVLinfo, COLOR_PAIR(SkL.getCurr()->NLevel+2));
@@ -509,7 +508,7 @@ void Play::LvlInfo_leftB(){
 
     wattron(LVLinfo, A_BOLD);
     box(LVLinfo, 0, '~');
-    wattroff(LVLinfo, COLOR_PAIR(8) | A_REVERSE);
+    wattroff(LVLinfo, COLOR_PAIR(8));
     wattroff(LVLinfo, COLOR_PAIR(SkL.getCurr()->NLevel+2));
 
     mvwprintw(LVLinfo, 1, 2, "Level %i Info:", SkL.getCurr()->NLevel);
