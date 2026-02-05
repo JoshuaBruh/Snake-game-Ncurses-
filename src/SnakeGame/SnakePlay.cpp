@@ -286,7 +286,7 @@ char Play::CheckCollision(int y, int x){
         if(apple->gety() == y && apple->getx() == x){
             return 'A';
         }
-        for(int i = 0; i<SnakeLength; i++){
+        for(int i = 1; i<SnakeLength; i++){
             if (Sk.SnakeCoord[i][0] == y && Sk.SnakeCoord[i][1] == x){
                 return 'B';
             }
